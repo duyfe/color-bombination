@@ -1,3 +1,11 @@
+export type Meta = {
+  [k: string]: any
+  name?: string
+  propety?: string
+  hid: string
+  content: string
+}
+
 export type CombinationImage = {
   alt: string
   url: string
