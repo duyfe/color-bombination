@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 
 import HeartIcon from '~/icons/heart.vue'

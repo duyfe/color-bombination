@@ -1,10 +1,13 @@
 <template>
-  <div class="combination" :data-id="combination.id">
-    <like-badge :is-liked="combination.liked" :likes="combination.likes" />
+  <div class="combination" :data-id="displayedCombination.id">
+    <like-badge
+      :is-liked="displayedCombination.liked"
+      :likes="displayedCombination.likes"
+    />
     <div
       class="combination__background"
       :style="{ backgroundImage: `url(${backgroundImage})` }"
-      :title="combination.name"
+      :title="displayedCombination.name"
     />
     <div class="combination__colors">
       <div
@@ -19,7 +22,11 @@
           :title="color.name"
         ></div>
         <h4 class="combination__colors__item__name">{{ color.name }}</h4>
-        <span class="combination__colors__item__">{{ color.hex }}</span>
+        <color-picker
+          :index="index"
+          :label="color.hex"
+          @update="handleUpdateColor"
+        />
       </div>
     </div>
   </div>
@@ -29,12 +36,13 @@
 import Vue, { PropType } from 'vue'
 
 import LikeBadge from './like-badge.vue'
+import ColorPicker from './color-picker.vue'
 
 import { Combination, CombinationColor } from '~/types'
 
 export default Vue.extend({
   name: 'CombinationDisplayComponent',
-  components: { LikeBadge },
+  components: { LikeBadge, ColorPicker },
   props: {
     combination: {
       type: Object as PropType<Combination>,
@@ -42,12 +50,28 @@ export default Vue.extend({
       default: () => ({} as Combination)
     }
   },
+  data() {
+    return {
+      displayedCombination: this.combination
+    }
+  },
   computed: {
     backgroundImage(): string {
-      return this.combination.featuredImage.url
+      return this.displayedCombination?.featuredImage?.url || ''
     },
     colors(): CombinationColor[] {
-      return this.combination.colors || []
+      return this.displayedCombination?.colors || []
+    }
+  },
+  watch: {
+    combination(value) {
+      this.displayedCombination = value
+    }
+  },
+  methods: {
+    handleUpdateColor(value: { color: string; index: number }) {
+      const colors = this.displayedCombination.colors
+      colors[value.index].hex = value.color
     }
   }
 })
