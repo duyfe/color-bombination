@@ -1,13 +1,20 @@
 <template>
-  <div class="container">
-    <combination-display
-      v-if="selectedCombination"
-      :combination="selectedCombination"
-    />
-    <related-combinations
-      :combinations="relatedCombinations"
-      @selected="handleSelectedCombination"
-    />
+  <div class="page home">
+    <page-breadcrumb :links="breadcrumbs" />
+    <h1 class="page__title">
+      Pastel blonde <br />
+      color combination
+    </h1>
+    <div class="container">
+      <combination-display
+        v-if="selectedCombination"
+        :combination="selectedCombination"
+      />
+      <related-combinations
+        :combinations="relatedCombinations"
+        @selected="handleSelectedCombination"
+      />
+    </div>
   </div>
 </template>
 
@@ -15,20 +22,34 @@
 import Vue from 'vue'
 
 import CombinationDisplay from '~/components/combination-display.vue'
+import PageBreadcrumb from '~/components/page-breadcrumb.vue'
 import RelatedCombinations from '~/components/related-combinations.vue'
 
 import { data } from '~/constants/combinations'
-import { Combination, CombinationResponse, RelatedCombination } from '~/types'
+import {
+  Combination,
+  CombinationResponse,
+  RelatedCombination,
+  Breadcrumb
+} from '~/types'
 
 export default Vue.extend({
-  name: 'IndexPage',
+  name: 'HomePage',
   components: {
     CombinationDisplay,
-    RelatedCombinations
+    RelatedCombinations,
+    PageBreadcrumb
   },
   data() {
+    const breadcrumbs: Breadcrumb[] = [
+      { label: 'Colors', href: '/' },
+      { label: 'Color Palettes', href: '/' },
+      { label: 'Pastel Blonde', href: '' }
+    ]
+
     return {
-      selectedIndex: 0
+      selectedIndex: 0,
+      breadcrumbs
     }
   },
   computed: {
@@ -69,3 +90,13 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.page {
+  @apply py-[22px];
+
+  &__title {
+    @apply text-center text-[27px] mt-[10px] leading-[31px] mb-[60px];
+  }
+}
+</style>

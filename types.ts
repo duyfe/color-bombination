@@ -33,3 +33,8 @@ export type CombinationResponse = {
   combination: Combination
   relatedCombinations: RelatedCombination[]
 }
+
+export type Breadcrumb = {
+  label: string
+  href?: string
+}
