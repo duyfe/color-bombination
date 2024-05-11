@@ -27,7 +27,7 @@ export default Vue.extend({
   @apply flex flex-row items-center justify-center gap-x-[10px];
 
   &__item {
-    @apply relative text-black text-[8px];
+    @apply relative text-[8px] text-brand;
 
     &::after {
       @apply content-[''] w-[8px] h-[8px] bg-[url(/images/arrow.svg)] absolute -right-[13px] top-1/2 -translate-y-1/2 -translate-x-1/2;

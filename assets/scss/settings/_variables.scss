@@ -3,4 +3,15 @@
   --color-gray: #959a9a;
   --color-gray-50: #f2f3f5;
   --color-pink: #f7cac9;
+  --text-color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // --text-color: #fff;
+  }
+}
+
+html[data-theme='dark'] {
+  --text-color: #fff;
 }

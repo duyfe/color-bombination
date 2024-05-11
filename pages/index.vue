@@ -26,12 +26,15 @@ import PageBreadcrumb from '~/components/page-breadcrumb.vue'
 import RelatedCombinations from '~/components/related-combinations.vue'
 
 import { data } from '~/constants/combinations'
+
 import {
   Combination,
   CombinationResponse,
   RelatedCombination,
   Breadcrumb
 } from '~/types'
+
+import { detechMode } from '~/utils/helper'
 
 export default Vue.extend({
   name: 'HomePage',
@@ -70,22 +73,27 @@ export default Vue.extend({
   },
   watch: {
     selectedCombination() {
-      this.setBodyBackgroundColor()
+      this.setTheme()
     }
   },
   mounted() {
-    this.setBodyBackgroundColor()
+    this.setTheme()
   },
   methods: {
-    setBodyBackgroundColor() {
-      document.body.style.backgroundColor = this.selectedCombination.color.hex
-    },
     handleSelectedCombination(id: number) {
       const selectedIndex = this.conbinations.findIndex(
         (item) => item.combination.id === id
       )
 
       this.selectedIndex = selectedIndex > 0 ? selectedIndex : 0
+    },
+    setTheme() {
+      // set body background color
+      document.body.style.backgroundColor = this.selectedCombination.color.hex
+
+      // update mode
+      const mode = detechMode(this.selectedCombination.color.hex)
+      this.$store.commit('update', mode)
     }
   }
 })
@@ -96,7 +104,7 @@ export default Vue.extend({
   @apply py-[22px];
 
   &__title {
-    @apply text-center text-[27px] mt-[10px] leading-[31px] mb-[60px];
+    @apply text-center text-[27px] mt-[10px] leading-[31px] mb-[60px] text-brand;
   }
 }
 </style>

@@ -11,6 +11,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          DEFAULT: 'var(--text-color)'
+        },
         black: {
           DEFAULT: 'var(--color-black)'
         },
