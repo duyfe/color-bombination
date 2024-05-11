@@ -8,5 +8,20 @@
 @import './settings/variables';
 
 body {
-  @apply bg-white min-h-screen;
+  @apply bg-white min-h-screen text-gray;
+}
+
+@layer utilities {
+  .container {
+    @apply block mx-auto max-w-[400px];
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold text-black;
 }
