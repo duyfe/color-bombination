@@ -1,5 +1,5 @@
 <template>
-  <div class="combination">
+  <div class="combination" :data-id="combination.id">
     <like-badge :is-liked="combination.liked" :likes="combination.likes" />
     <div
       class="combination__background"
@@ -13,6 +13,7 @@
         class="combination__colors__item"
       >
         <div
+          v-copy="color.hex"
           class="combination__colors__item__background"
           :style="{ backgroundColor: color.hex }"
           :title="color.name"
@@ -67,7 +68,7 @@ export default Vue.extend({
       @apply flex-1 text-center text-[8px];
 
       &__background {
-        @apply w-full h-20;
+        @apply w-full h-20 cursor-copy;
       }
 
       &__name {

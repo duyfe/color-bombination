@@ -7,6 +7,7 @@
         :key="item.id"
         :title="item.name"
         class="related-combination__grid__item"
+        @click="handleSelectCombination(item)"
       >
         <div
           v-for="(color, index) in item.colors"
@@ -60,6 +61,9 @@ export default Vue.extend({
   methods: {
     handleClickSeeMore() {
       this.currentPage++
+    },
+    handleSelectCombination(combination: RelatedCombination) {
+      this.$emit('selected', combination.id)
     }
   }
 })
@@ -68,6 +72,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .related-combination {
   @apply mt-12;
+
   &__title {
     @apply text-center text-[20px] leading-none;
   }
@@ -76,7 +81,7 @@ export default Vue.extend({
     @apply grid grid-cols-2 grid-flow-row gap-5 mt-[22px];
 
     &__item {
-      @apply h-[45px] flex rounded-[4px] overflow-hidden;
+      @apply h-[45px] flex rounded-[4px] overflow-hidden cursor-pointer;
 
       &__color {
         @apply flex-1;

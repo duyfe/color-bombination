@@ -4,7 +4,10 @@
       v-if="selectedCombination"
       :combination="selectedCombination"
     />
-    <related-combinations :combinations="relatedCombinations" />
+    <related-combinations
+      :combinations="relatedCombinations"
+      @selected="handleSelectedCombination"
+    />
   </div>
 </template>
 
@@ -44,8 +47,25 @@ export default Vue.extend({
       )
     }
   },
+  watch: {
+    selectedCombination() {
+      this.setBodyBackgroundColor()
+    }
+  },
   mounted() {
-    console.log(this.selectedCombination)
+    this.setBodyBackgroundColor()
+  },
+  methods: {
+    setBodyBackgroundColor() {
+      document.body.style.backgroundColor = this.selectedCombination.color.hex
+    },
+    handleSelectedCombination(id: number) {
+      const selectedIndex = this.conbinations.findIndex(
+        (item) => item.combination.id === id
+      )
+
+      this.selectedIndex = selectedIndex > 0 ? selectedIndex : 0
+    }
   }
 })
 </script>
