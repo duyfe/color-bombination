@@ -24,6 +24,9 @@ module.exports = {
         pink: {
           DEFAULT: 'var(--color-pink)'
         }
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif']
       }
     }
   },

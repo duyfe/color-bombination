@@ -5,15 +5,17 @@
       Pastel blonde <br />
       color combination
     </h1>
-    <div class="container">
-      <combination-display
-        v-if="selectedCombination"
-        :combination="selectedCombination"
-      />
-      <related-combinations
-        :combinations="relatedCombinations"
-        @selected="handleSelectedCombination"
-      />
+    <div class="page__section">
+      <div class="container">
+        <combination-display
+          v-if="selectedCombination"
+          :combination="selectedCombination"
+        />
+        <related-combinations
+          :combinations="relatedCombinations"
+          @selected="handleSelectedCombination"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -101,10 +103,27 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .page {
-  @apply py-[22px];
+  @apply pt-[22px];
 
   &__title {
     @apply text-center text-[27px] mt-[10px] leading-[31px] mb-[60px] text-brand;
+  }
+
+  &__section {
+    @apply relative overflow-hidden min-h-screen;
+
+    .container {
+      @apply z-50;
+    }
+
+    &::before {
+      @apply content-[''] w-full h-[200px] absolute top-0 bg-[url(/images/foreground.png)] bg-no-repeat;
+      background-size: 100% 100%;
+    }
+
+    &::after {
+      @apply content-[''] w-full h-full bg-white absolute top-[199px] z-[-1];
+    }
   }
 }
 </style>

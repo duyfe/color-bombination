@@ -74,7 +74,7 @@ export default Vue.extend({
   @apply mt-12;
 
   &__title {
-    @apply text-center text-[20px] leading-none text-brand;
+    @apply text-center text-[20px] leading-none;
   }
 
   &__grid {

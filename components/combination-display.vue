@@ -96,7 +96,7 @@ export default Vue.extend({
       }
 
       &__name {
-        @apply font-semibold underline mt-[15px] text-brand;
+        @apply font-semibold underline mt-[15px];
       }
     }
   }
