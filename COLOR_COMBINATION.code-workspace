@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "name": "COLOR_COMBINATION__Site",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.autoIndent": "full",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "html.format.wrapAttributes": "force-aligned",
+    "javascript.preferences.quoteStyle": "single",
+    "eslint.validate": ["javascript", "typescript", "vue", "html"],
+    "typescript.tsdk": "node_modules/typescript/lib"
+  }
+}

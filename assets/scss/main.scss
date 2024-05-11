@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// variables
+@import './settings/variables';
+
+body {
+  @apply bg-white min-h-screen;
+}
