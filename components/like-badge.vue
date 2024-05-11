@@ -28,7 +28,9 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .like {
-  @apply rounded-sm bg-white shadow-md absolute top-[8px] right-3 flex items-center flex-nowrap text-[8px] text-black tracking-tighter w-[50px] h-[25px] px-[5px] cursor-pointer;
+  @apply rounded-sm bg-white shadow-md absolute top-[8px] right-3 flex items-center flex-nowrap text-[8px] text-black tracking-tighter w-[50px] h-[25px] px-[5px] cursor-pointer transition-all duration-300;
+
+  @apply hover:text-pink-50;
 
   svg {
     @apply mr-1 w-[16px];

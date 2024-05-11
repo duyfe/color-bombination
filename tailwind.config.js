@@ -22,7 +22,8 @@ module.exports = {
           50: 'var(--color-gray-50)'
         },
         pink: {
-          DEFAULT: 'var(--color-pink)'
+          DEFAULT: 'var(--color-pink)',
+          50: 'var(--color-pink-50)'
         }
       },
       fontFamily: {

@@ -20,6 +20,7 @@
           class="combination__colors__item__background"
           :style="{ backgroundColor: color.hex }"
           :title="color.name"
+          @click="handleCopyValue"
         ></div>
         <h4 class="combination__colors__item__name">{{ color.name }}</h4>
         <color-picker
@@ -72,6 +73,12 @@ export default Vue.extend({
     handleUpdateColor(value: { color: string; index: number }) {
       const colors = this.displayedCombination.colors
       colors[value.index].hex = value.color
+    },
+    handleCopyValue(ev: MouseEvent) {
+      const el = ev.target as HTMLElement
+      el.classList.add('copied')
+
+      window.setTimeout(() => el.classList.remove('copied'), 2000)
     }
   }
 })
@@ -92,7 +99,22 @@ export default Vue.extend({
       @apply flex-1 text-center text-[8px];
 
       &__background {
-        @apply w-full h-20 cursor-copy;
+        @apply w-full h-20 relative;
+
+        &::before {
+          @apply content-['Copy'] absolute w-full h-full flex justify-center items-center text-white cursor-pointer opacity-0 transition-opacity duration-300;
+        }
+
+        &::after {
+          @apply content-[''] w-[10px] h-[10px] flex justify-center items-center text-white cursor-pointer opacity-0 transition-opacity duration-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[url(/images/tick.svg)];
+        }
+
+        @apply hover:before:opacity-100;
+
+        &.copied {
+          @apply after:opacity-100;
+          @apply before:opacity-0;
+        }
       }
 
       &__name {
