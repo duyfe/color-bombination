@@ -33,7 +33,8 @@ const head = {
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', href: '/images/common/apple-touch-icon.png' },
-    { rel: 'canonical', href: configs.domain }
+    { rel: 'canonical', href: configs.domain },
+    { rel: 'manifest', href: 'manifest.json' }
   ],
   noscript: [],
   script: [
